@@ -2,6 +2,7 @@ package example.persistence;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 /**
@@ -9,6 +10,7 @@ import javax.persistence.Entity;
  * @author Stefan Heimberg <kontakt@stefanheimberg.ch>
  */
 @Entity
+@DiscriminatorValue(value = "PFMOBILEVERTRAG")
 public class PFMobileVertrag extends Vertrag {
     
     @Basic(optional = false)
