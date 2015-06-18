@@ -10,7 +10,7 @@ import javax.persistence.Entity;
  * @author Stefan Heimberg <kontakt@stefanheimberg.ch>
  */
 @Entity
-@DiscriminatorValue(value = "KARTEVERTRAG")
+@DiscriminatorValue(value = "1")
 public class KartenVertrag extends Vertrag {
 
     @Basic(optional = false)

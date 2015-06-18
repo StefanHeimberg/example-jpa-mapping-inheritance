@@ -10,7 +10,7 @@ import javax.persistence.Entity;
  * @author Stefan Heimberg <kontakt@stefanheimberg.ch>
  */
 @Entity
-@DiscriminatorValue(value = "PFMOBILEVERTRAG")
+@DiscriminatorValue(value = "2")
 public class PFMobileVertrag extends Vertrag {
     
     @Basic(optional = false)

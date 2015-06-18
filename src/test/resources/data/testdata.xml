@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
 
-    <vertrag id="1" art="KARTEVERTRAG" />
-    <vertrag id="2" art="PFMOBILEVERTRAG" />
-    <vertrag id="3" art="KARTEVERTRAG" />
-    <vertrag id="4" art="PFMOBILEVERTRAG" />
-    <vertrag id="5" art="PFMOBILEVERTRAG" />
+    <vertrag id="1" art="1" />
+    <vertrag id="2" art="2" />
+    <vertrag id="3" art="1" />
+    <vertrag id="4" art="2" />
+    <vertrag id="5" art="2" />
     
     <kartenvertrag id="1" karteid="1010101" kontonr="111" />
     <kartenvertrag id="3" karteid="3030303" kontonr="333" />
