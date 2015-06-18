@@ -3,7 +3,12 @@ package example.persistence;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNotSame;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -52,7 +57,7 @@ public class CrudTest {
         
         final KartenVertrag kartenVertragPeter = new KartenVertrag();
         kartenVertragPeter.setKarteId(4321);
-        kartenVertragPeter.setKontoNr(2222);
+        kartenVertragPeter.setKontoNr(4444);
         em.persist(kartenVertragPeter);
         em.flush();
         em.refresh(kartenVertragPeter);
@@ -68,60 +73,51 @@ public class CrudTest {
     public void test() {
     }
     
-//    @After
-//    public void delete() {
-//        em.getTransaction().begin();
-//
-//        em.remove(em.getReference(Employee.class, employeeId));
-//        em.remove(em.getReference(Department.class, departmentId));
-//
-//        em.getTransaction().commit();
-//            
-//        // sicherstellen dass die entities neu geladen werden.
-//        em.clear();
-//        emf.getCache().evictAll();
-//        
-//        assertEquals(0l, em.createQuery("Select count(e) From Employee e").getSingleResult());
-//        assertEquals(0l, em.createQuery("Select count(e) From Address e").getSingleResult());
-//        assertEquals(0l, em.createQuery("Select count(e) From Department e").getSingleResult());
-//    }
+    @After
+    public void delete() {
+        em.getTransaction().begin();
 
-//    @Test
-//    public void find() {
-//        final Department department = em.find(Department.class, departmentId);
-//        assertNotNull(department);
-//        assertEquals("IT", department.getName());
-//
-//        final Address address = em.find(Address.class, addressId);
-//        assertNotNull(address);
-//        assertEquals("Blumenstrasse 13", address.getStreet());
-//
-//        final Employee employee = em.find(Employee.class, employeeId);
-//        assertNotNull(employee);
-//        assertSame(address, employee.getAddress());
-//        assertSame(department, employee.getDepartment());
-//    }
+        em.remove(em.getReference(KartenVertrag.class, kartenVertragFritzId));
+        em.remove(em.getReference(KartenVertrag.class, kartenVertragPeterId));
 
-//    @Test
-//    public void update() {
-//        final Employee employee1 = em.find(Employee.class, employeeId);
-//        assertFalse("Fritz Friedrich".equals(employee1.getName()));
-//            
-//        em.getTransaction().begin();
-//
-//        employee1.setName("Fritz Friedrich");
-//        employee1.getAddress().setStreet("Blumenstrasse 99");
-//
-//        em.getTransaction().commit();
-//            
-//        em.clear();
-//        emf.getCache().evictAll();
-//
-//        final Employee employee2 = em.find(Employee.class, employeeId);
-//        assertNotSame(employee1, employee2);
-//        assertNotSame(employee1.getAddress(), employee2.getAddress());
-//
-//        assertEquals("Fritz Friedrich", employee2.getName());
-//        assertEquals("Blumenstrasse 99", employee2.getAddress().getStreet());
-//    }
+        em.getTransaction().commit();
+            
+        // sicherstellen dass die entities neu geladen werden.
+        em.clear();
+        emf.getCache().evictAll();
+        
+        assertEquals(0l, em.createQuery("Select count(e) From KartenVertrag e").getSingleResult());
+        assertEquals(0l, em.createQuery("Select count(e) From Vertrag e").getSingleResult());
+        assertEquals(0l, em.createQuery("Select count(e) From PFMobileVertrag e").getSingleResult());
+    }
+
+    @Test
+    public void find() {
+        final KartenVertrag kartenVertragFritz = em.find(KartenVertrag.class, kartenVertragFritzId);
+        assertNotNull(kartenVertragFritz);
+        assertEquals(Integer.valueOf(1234), kartenVertragFritz.getKarteId());
+        
+        final KartenVertrag kartenVertragPater = em.find(KartenVertrag.class, kartenVertragPeterId);
+        assertNotNull(kartenVertragPater);
+        assertEquals(Integer.valueOf(4321), kartenVertragPater.getKarteId());
+    }
+
+    @Test
+    public void update() {
+        final KartenVertrag kartenVertragFritz1 = em.find(KartenVertrag.class, kartenVertragFritzId);
+        assertEquals(Integer.valueOf(1111), kartenVertragFritz1.getKontoNr());
+            
+        em.getTransaction().begin();
+
+        kartenVertragFritz1.setKontoNr(2222);
+
+        em.getTransaction().commit();
+            
+        em.clear();
+        emf.getCache().evictAll();
+
+        final KartenVertrag kartenVertragFritz2 = em.find(KartenVertrag.class, kartenVertragFritzId);
+        assertNotSame(kartenVertragFritz1, kartenVertragFritz2);
+        assertEquals(Integer.valueOf(2222), kartenVertragFritz2.getKontoNr());
+    }
 }
