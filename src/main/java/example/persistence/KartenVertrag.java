@@ -12,12 +12,16 @@ import javax.persistence.Entity;
 public class KartenVertrag extends Vertrag {
 
     @Basic(optional = false)
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private Integer karteId;
 
     @Basic(optional = false)
     @Column(nullable = false)
     private Integer kontoNr;
+
+    public KartenVertrag() {
+        super(VertragArt.KARTEVERTRAG);
+    }
 
     public Integer getKarteId() {
         return karteId;

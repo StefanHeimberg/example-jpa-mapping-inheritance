@@ -15,6 +15,10 @@ public class PFMobileVertrag extends Vertrag {
     @Column(nullable = false)
     private String handyNr;
 
+    public PFMobileVertrag() {
+        super(VertragArt.PFMOBILEVERTRAG);
+    }
+
     public String getHandyNr() {
         return handyNr;
     }
