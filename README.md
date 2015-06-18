@@ -7,6 +7,15 @@
 - Maven 3 (in NetBeans enthalten)
 
 
+## Vorbereitung
+- JRE installieren
+- NetBeans installieren
+- in NetBeans unter "Services" eine neue JavaDB Datenbank anlegen
+  - Name: ExampleJpaMappingInheritance
+  - User: example
+  - Pass: example
+
+
 ## Beispiel Anforderung
 
 - Es existieren 2 Ausprägungen eines Vertrages. Den Kartenvertrag und den PFMobilevertrag
