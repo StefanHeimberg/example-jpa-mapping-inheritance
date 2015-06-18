@@ -2,6 +2,7 @@
 
 ## Anforderungen
 
+- Oracle JDK 1.8
 - NetBeans IDE 8 (https://netbeans.org/)
 - Derby DB (in NetBeans enthalten)
 - Maven 3 (in NetBeans enthalten)
