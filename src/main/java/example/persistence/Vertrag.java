@@ -29,7 +29,10 @@ public abstract class Vertrag implements Serializable {
     @Column(nullable = false)
     private VertragArt art;
 
-    public Vertrag(final VertragArt art) {
+    protected Vertrag() {
+    }
+
+    protected Vertrag(final VertragArt art) {
         this.art = art;
     }
 

@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
 
+    <vertrag id="1" dtype="KartenVertrag" art="KARTEVERTRAG" />
+    <vertrag id="2" dtype="PFMobileVertrag" art="PFMOBILEVERTRAG" />
+    <vertrag id="3" dtype="KartenVertrag" art="KARTEVERTRAG" />
+    <vertrag id="4" dtype="PFMobileVertrag" art="PFMOBILEVERTRAG" />
+    <vertrag id="5" dtype="PFMobileVertrag" art="PFMOBILEVERTRAG" />
     
+    <kartenvertrag id="1" karteid="1010101" kontonr="111" />
+    <kartenvertrag id="3" karteid="3030303" kontonr="333" />
+    
+    <pfmobilevertrag id="2" handynr="+41 79 222 22 22" />
+    <pfmobilevertrag id="4" handynr="+41 79 444 44 44" />
+    <pfmobilevertrag id="5" handynr="+41 79 555 55 55" />
+    
+    <sequence seq_name="SEQ_GEN" seq_count="5" />
     
 </dataset>
